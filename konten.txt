@@ -1,0 +1,7 @@
+Halo! Ini adalah contoh isi dari file teks.
+
+Belajar Node.js sangat menyenangkan dan bermanfaat. 
+Dengan Node.js, kita bisa membangun berbagai macam aplikasi, 
+mulai dari server sederhana hingga aplikasi web yang kompleks.
+
+Selamat mencoba!
