@@ -1,0 +1,75 @@
+1. Request Endpoint GET /products with Query Parameters
+Purpose:
+To ensure the pagination and search features function correctly.
+
+Analysis:
+
+The endpoint supports query parameters such as page, limit, and search.
+Example usage:
+?page=1&limit=10 retrieves the first 10 products.
+?search=variant filters products whose names contain the word "variant".
+Validation Focus:
+
+Verify the results are sorted by creation time (createdAt).
+Confirm the accuracy of metadata such as total items, total pages (totalPages), and items per page (limit).
+
+2. Request Endpoint POST /products with Body
+(Product: Kemeja Variant 1)
+
+Purpose:
+To test input validation when creating a new product.
+
+Analysis:
+
+The data provided includes all required properties, including the optional slug field.
+The validation process should succeed, and the data should be saved correctly in the database.
+
+3. Request Endpoint POST /products with Body
+(Product: Kemeja Variant 2)
+
+Purpose:
+To test the middleware that automatically generates the slug property.
+
+Analysis:
+
+The slug field is missing in the request body.
+The middleware pre('save') should automatically generate the slug based on the product's name:
+Example: "Kemeja Variant 2" -> "kemeja-variant-2".
+Validation and data saving processes should proceed without errors.
+
+4. Request Endpoint POST /products with Body
+(Product: Kemeja Variant 3)
+
+Purpose:
+To test the Yup validation logic for incomplete data.
+
+Analysis:
+
+The request body is missing critical fields such as description, price, qty, and images.
+Yup validation should detect these omissions and return specific error messages:
+Example: "description is a required field".
+
+5. Integrating All Material Steps
+Purpose:
+To verify that all implemented features work seamlessly together.
+
+Steps:
+
+Validation in POST: Ensure all valid product data is saved correctly, and invalid data returns descriptive errors.
+Mongoose Middleware: Automatically generates slugs if not provided.
+Pagination in GET: Retrieve product lists with query parameters successfully, including search functionality.
+Evaluation Criteria:
+
+Valid data is stored without issues.
+Invalid data triggers appropriate error responses.
+All functionalities (validation, middleware, pagination) are tested and verified.
+
+6. Documentation
+Purpose:
+To record the implementation and analysis of each case in a structured format.
+
+Steps:
+
+Create a Google Docs document summarizing the analysis of each case.
+Include examples of request bodies, query parameters, and expected responses.
+Highlight key points, such as any encountered errors and how the features are interconnected.
